@@ -1,0 +1,6 @@
+{% extends 'attendance/base.html' %}
+{% load static %}
+{% block content %}
+    <h2>Assiduité marquée avec succès !</h2>
+    <a href="{% url 'mark_attendance' %}">Retourner à la page de marquage</a>
+{% endblock %}

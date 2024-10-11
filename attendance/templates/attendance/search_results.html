@@ -1,0 +1,40 @@
+{% extends 'attendance/base.html' %}
+{% load static %}
+{% block content %}
+    <h2>Résultats de la Recherche et du Filtrage</h2>
+
+    <form method="get">
+        {{ form.as_p }}
+        <button type="submit">🔎Rechercher</button>
+    </form>
+
+    <h3>Étudiants</h3>
+    <table border="1">
+        <tr>
+            <th>👨🏽‍🎓Nom</th>
+            <th>ID</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.user.username }}</td>
+            <td>{{ student.student_id }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h3>Assiduité</h3>
+    <table border="1">
+        <tr>
+            <th>👨🏽‍🎓Étudiant</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+        {% for record in attendance_records %}
+        <tr>
+            <td>{{ record.student.user.username }}</td>
+            <td>{{ record.date }}</td>
+            <td>{{ record.status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'attendance/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rapport d'Assiduité de {{ student.user.username }}</title>
+</head>
+<body>
+    <h2>Rapport d'Assiduité pour {{ student.user.username }}</h2>
+    <p>Nombre total de cours : {{ total_classes }}</p>
+    <p>Nombre de cours assistés : {{ attended_classes }}</p>
+    <p>Pourcentage d'assiduité : {{ attendance_percentage }}%</p>
+
+    <h3>Détails des Cours</h3>
+    <table border="1">
+        <tr>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+        {% for record in attendance_records %}
+        <tr>
+            <td>{{ record.date }}</td>
+            <td>{{ record.status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

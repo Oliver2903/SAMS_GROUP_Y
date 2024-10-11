@@ -1,0 +1,21 @@
+{% extends 'attendance/base.html' %}
+{% load static %}
+{% block content %}
+    <h2>Rapport d'Assiduité de la Classe</h2>
+    <table border="1">
+        <tr>
+            <th>👨🏽‍🎓Nom de l'Étudiant</th>
+            <th>Total des Cours</th>
+            <th>Cours Assistés</th>
+            <th>Pourcentage d'Assiduité</th>
+        </tr>
+        {% for record in class_attendance %}
+        <tr>
+            <td>{{ record.student.user.username }}</td>
+            <td>{{ record.total_classes }}</td>
+            <td>{{ record.attended_classes }}</td>
+            <td>{{ record.attendance_percentage }}%</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

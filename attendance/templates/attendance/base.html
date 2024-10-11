@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}SAMS{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home' %}">SAMS</a>
+            <ul>
+                <li><a href="{% url 'mark_attendance' %}">📑Marquer Assiduité</a></li>
+                <li><a href="{% url 'attendance_report' %}">Rapport d'Assiduité</a></li>
+                <li><a href="{% url 'class_report' %}">Rapport de classe</a></li>
+                <li><a href="{% url 'search_students' %}">🔎Rechercher</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        {% block content %}
+        
+        {% endblock %}
+    </div>
+
+</body>
+</html>

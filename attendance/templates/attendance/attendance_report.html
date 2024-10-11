@@ -1,0 +1,26 @@
+{% extends 'attendance/base.html' %}
+{% load static %}
+{% block content %}
+    <h2>Rapport d'Assiduité des Étudiants</h2>
+    <table border="1">
+        <tr>
+            <th>👨🏽‍🎓Nom de l'Étudiant</th>
+            <th>Pourcentage d'Assiduité</th>
+            <th>Éligible pour les Examens</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.user.username }}</td>
+            <td>{{ student.attendance_percentage }}%</td>
+            <td>
+                {% if student.is_eligible %}
+                Oui
+                {% else %}
+                Non
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
